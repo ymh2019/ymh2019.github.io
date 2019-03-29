@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-29T12:43:40.020Z</updated>
+  <updated>2019-03-29T12:44:58.001Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/03/27/html%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2019/03/27/html知识总结/</id>
     <published>2019-03-27T11:31:36.000Z</published>
-    <updated>2019-03-29T12:43:40.020Z</updated>
+    <updated>2019-03-29T12:44:58.001Z</updated>
     
     <content type="html"><![CDATA[<h2>HTML</h2><p>1.基本结构<br>&lt; !DOCTYPE html&gt;//声明文档的解析类型，必须写在第一行<br>&lt; html&gt;//根标签(开始)</p><p>&lt; head&gt;//头标签(开始)<br>&lt; meta charset=”utf-8”&gt;//声明为utf-8编码，避免出现乱码<br>&lt; title&gt;html+css&lt;/ title&gt;//页面标题标签<br>&lt;/ head&gt;//头标签(结束)</p><a id="more"></a><p>&lt; body&gt;//主体标签(开始)<br>    &lt; h1&gt;我的标题&lt;/ h1&gt;//内容标题标签<br>    &lt; p&gt;我的段落。&lt;/ p&gt;//段落标签<br>&lt;/ body&gt;//主体标签(结束)<br>&lt;/ html&gt;//根标签(结束)<br>注：:HTML中不支持 空格、回车、制表符，它们都会被解析成一个空白字符。</p><p>2.标签<br>标签写法要用小写字母，由尖括号包围，成对出现的标签称为双标签不能忘记结束标签。单独出现的标签叫单标签，最好也要闭合，形式为&lt;标签名 /&gt;，例如&lt; br /&gt;(换行标签)。&lt; !DOCTYPE html&gt;不是标签，只是声明。从开始标签到结束标签所有代码就是HTML的元素，之间的内容叫元素内容。没有内容的 HTML 元素被称为空元素，空元素是在开始标签中关闭的，例如&lt; br /&gt;。<br>3.属性<br>  属性可以在元素中添加附加信息，属性一般描述于开始标签，属性总是以名称/值对的形式出现。例如&lt; a herf=” <a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a> “&gt; 百度一下&lt; /a&gt;，&lt; a&gt;为链接标签，herf是属性名称，双引号中是链接地址，称为属性值，属性和属性值，尽量小写，也可以自定义属性(不能使用中文)。<br>4.注释<br>  &lt; !– 注释的内容 –&gt;<br>5.水平线<br>  单标签：&lt; hr /&gt;可连续使用多个。<br>6.标题<br>  是通过&lt; h1&gt;-&lt; h6&gt;标签进行定义的，&lt; h1&gt;定义最大的标题。&lt; h6&gt;定义最小的标题。浏览器会自动地在标题的前后添加空行。<br>7.段落<br>  通过&lt; p&gt;标签定义，浏览器会自动地在段落的前后添加空行，如果在不产生一个新段落的情况下进行换行，须使用&lt; br /&gt;标签。<br>8.文本格式化(双标签)<br>  &lt; b&gt;定义粗体文字，&lt; i&gt;定义斜体字，&lt; small&gt;定义小号字，&lt; big&gt;定义大号字，&lt; strong&gt;定义加重语气。<br>9.链接<br>  使用&lt; a&gt;设置超文本链接，如&lt; a href=” <a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a> “&gt; 百度一下&lt; /a&gt;。<br>10.图像<br>  使用&lt; img&gt;标签，&lt; img border=”边框属性” src=”图片路径” alt=”为图像定义一串预备的可替换的文本” width=”图像宽度” height=”图像高度” &gt;<br>11.表格<br>  表格由 &lt; table&gt; 标签来定义。&lt; tr&gt;定义行，&lt; td&gt;定义表格数据，&lt; th&gt;定义表格表头，大多数浏览器会把表头显示为粗体居中的文本。写法：</p><p>&lt; table border=”1”&gt;<br>    &lt; tr&gt;<br>        &lt; th&gt;….&lt;/ th&gt;<br>        &lt; th&gt;…..&lt;/ th&gt;<br>    &lt;/ tr&gt;<br>    &lt; tr&gt;<br>        &lt; td&gt;…….&lt;/ td&gt;<br>        &lt; td&gt;………&lt;/ td&gt;<br>    &lt;/ tr&gt;<br>&lt;/ table&gt;</p><p>12.列表<br>  无序列表：&lt; ul&gt;&lt; li&gt;苹果&lt;/ li&gt;&lt; li&gt;梨&lt;/ li&gt;&lt;/ ul&gt;<br>  有序列表：&lt; ol&gt;&lt; li&gt;苹果&lt;/ li&gt;&lt; li&gt;梨&lt;/ li&gt;&lt;/ ol&gt;<br>13.表单<br>  使用&lt; form&gt;标签定义，输入标签为&lt; input&gt;，输入类型是由类型属性 type 定义的。例：</p><p>&lt; form action=”表单数据发送的地址”&gt;<br>User : &lt; input type=”text” name=”user”&gt;//文本域<br>Password: &lt; input type=”password” name=”password”&gt;//密码域<br>&lt; input type=”submit” value=”提交”&gt;//提交按钮<br>&lt;/ form&gt;</p><p>  单选按钮：&lt; input type=”radio”&gt; 标签定义了表单单选框选项。<br>  复选框：&lt; input type=”checkbox”&gt; 定义了复选框。</p>]]></content>
     
@@ -38,18 +38,22 @@
   </entry>
   
   <entry>
-    <title>第一篇</title>
+    <title>hexo搭建博客</title>
     <link href="http://yoursite.com/2019/03/27/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2019/03/27/hexo搭建博客/</id>
     <published>2019-03-27T11:24:39.000Z</published>
-    <updated>2019-03-27T11:25:53.895Z</updated>
+    <updated>2019-03-29T14:21:30.806Z</updated>
+    
+    <content type="html"><![CDATA[<h2>hexo+github 搭建自己的博客</h2><p>​    本人是学习网络安全的一个萌新，这是第一次写博客还不太熟练，以后会在博客分享记录自己在网络安全道路的学习经历。hexo+github搭建博客也是现在使用比较多、比较好用的方式了（当时学长就是推荐我们使用hexo搭建自己的博客），下面进入正题。<a id="more"></a></p><p>推荐链接：<a href="https://url.cn/5W2XCKI" target="_blank" rel="noopener">https://url.cn/5W2XCKI</a>   </p><p>照着这个一步一步来就可以初步搭好自己的博客了（我就是看的这个搭好了自己的博客）。其中有一点细节需要注意<img src="/2019/03/27/hexo搭建博客/QQ截图20190329213320.png" alt="1" title="1"></p><p>红线地方输入的时候不是一行，而是<img src="/2019/03/27/hexo搭建博客/20190329213924.png" alt="2" title="2"></p><p>这样自己博客就初步搭好了，后续就是配置、主题等操作了，这里也推荐一个博客：<a href="https://blog.csdn.net/wsmrzx/article/details/81478595" target="_blank" rel="noopener">https://blog.csdn.net/wsmrzx/article/details/81478595</a>  博主的hexo系列可以参考一下，当然也可以在网上找，也有很多的关于hexo+github搭建博客的文章。</p><h2 id="自己搭建过程中的一些想法"><a href="#自己搭建过程中的一些想法" class="headerlink" title="自己搭建过程中的一些想法"></a>自己搭建过程中的一些想法</h2><p>​    在搭建过程中可能会出现一些意外的错误，遇到意外错误可以把出现的错误代码直接复制下来，粘到百度去搜一下，发表一下自己的观点：搭建博客过程中或者学习其他东西遇到错误，一般都是一些小错误，所以在百度的时候<strong>首先就看那种简单、篇幅少的文章，去试一下，不要找那些写的特别多的</strong>,就会少很多麻烦，也省时间。不得不说百度确实是个好东西，平常遇到的很多问题都可以先去百度一下，解决之后印象也比较深。</p><p>​    这次博客就写这么多了，我们下篇见！！</p>]]></content>
     
     <summary type="html">
     
+      &lt;h2&gt;hexo+github 搭建自己的博客&lt;/h2&gt;
+
+&lt;p&gt;​    本人是学习网络安全的一个萌新，这是第一次写博客还不太熟练，以后会在博客分享记录自己在网络安全道路的学习经历。hexo+github搭建博客也是现在使用比较多、比较好用的方式了（当时学长就是推荐我们使用hexo搭建自己的博客），下面进入正题。&lt;/p&gt;
+    
     </summary>
     
-    
-      <category term="hasjdhjash" scheme="http://yoursite.com/tags/hasjdhjash/"/>
     
   </entry>
   
