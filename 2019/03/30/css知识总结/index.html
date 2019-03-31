@@ -141,13 +141,10 @@
 <meta property="og:site_name" content="流年、乱了浮生">
 <meta property="og:description" content="CSS1.CSS定义和三种引用方式​    CSS全称为“层叠样式表 (Cascading Style Sheets)”，作用是为html元素去定义样式能够实现内容与表现相分离，提高代码的可重用性和可维护性。使用CSS样式的可以通过定义某个样式，使网页不同位置的文字有着统一的字体、字号或者颜色等。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/03/30/css知识总结/QQ截图20190331151845.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/30/css知识总结/QQ截图20190331151911.png">
-<meta property="og:updated_time" content="2019-03-31T07:57:29.834Z">
+<meta property="og:updated_time" content="2019-03-31T11:48:23.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css知识总结">
 <meta name="twitter:description" content="CSS1.CSS定义和三种引用方式​    CSS全称为“层叠样式表 (Cascading Style Sheets)”，作用是为html元素去定义样式能够实现内容与表现相分离，提高代码的可重用性和可维护性。使用CSS样式的可以通过定义某个样式，使网页不同位置的文字有着统一的字体、字号或者颜色等。">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/30/css知识总结/QQ截图20190331151845.png">
 
 
 
@@ -362,10 +359,12 @@
 <p>​    1）行内样式： 使用style属性在HTML元素中引入CSS样式（只能控制某一个元素的显示效果)</p>
 <p>​    例：&lt; p  style=”font-size：10px；color：red；”&gt;&lt;/ p&gt; </p>
 <p>​    2）内部样式表： 将样式放在&lt; style&gt;标签中，&lt; style&gt;标签写在&lt; head&gt;标签中    </p>
-<p>​    例：<img src="/2019/03/30/css知识总结/QQ截图20190331151845.png" alt="梨1" title="梨1"></p>
-<p>​    3）外部样式表： 将CSS代码保存在以.css结尾的css样式文件中，再进行引用</p>
+<p>​    例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;内部样式表&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    div&#123;</span><br><span class="line">        color: red;</span><br><span class="line">        width: 100px;</span><br><span class="line">        backgroud: block;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div&gt;梨&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>3）外部样式表： <strong>将CSS代码保存在以.css结尾的css样式文件中，再进行引用</strong></p>
 <p>​    用法：在&lt; head&gt;&lt;/ head&gt;中写以下代码：&lt; link rel=”stylesheet” type=”text/css” href=”链接的css文件地址” /&gt;（这是一种常用的方式）</p>
-<p>​    例：<img src="/2019/03/30/css知识总结/QQ截图20190331151911.png" alt="梨2" title="梨2"></p>
+<p>​    例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;外部样式表&lt;/title&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;1.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div&gt;梨&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <p>​    特点：实现内容与表现相分离；将可重用性和可维护性体现的最完美(所有的页面都能用)；可以在整个网站乃至于互联网中做通用的样式定义。</p>
 <p>​    <strong>样式优先级：行内样式 &gt; 内部样式表 &gt; 外部样式表</strong>    </p>
 <p>​    内部样式表 或 外部样式表，级别处于中间位置；就近原则（谁靠下，以谁为主）。</p>
