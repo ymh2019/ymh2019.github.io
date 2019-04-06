@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Robato Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="流年、乱了浮生" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="1.PHP概述PHP语法借鉴吸收了C语言、java和Perl等流行计算机语言的特点。PHP主要目标是允许网络开发人员快速编写动态页面，简单说PHP主要用于开发各种类型的网站程序。PHP是脚本语言不需要事先编译，在服务器端运行。PHP可以运行在windows、Linux等各种操作系统上。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP基本语法与流程控制">
+<meta property="og:url" content="http://yoursite.com/2019/04/05/PHP基本语法与流程控制/index.html">
+<meta property="og:site_name" content="流年、乱了浮生">
+<meta property="og:description" content="1.PHP概述PHP语法借鉴吸收了C语言、java和Perl等流行计算机语言的特点。PHP主要目标是允许网络开发人员快速编写动态页面，简单说PHP主要用于开发各种类型的网站程序。PHP是脚本语言不需要事先编译，在服务器端运行。PHP可以运行在windows、Linux等各种操作系统上。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-04-06T09:02:47.255Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP基本语法与流程控制">
+<meta name="twitter:description" content="1.PHP概述PHP语法借鉴吸收了C语言、java和Perl等流行计算机语言的特点。PHP主要目标是允许网络开发人员快速编写动态页面，简单说PHP主要用于开发各种类型的网站程序。PHP是脚本语言不需要事先编译，在服务器端运行。PHP可以运行在windows、Linux等各种操作系统上。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/05/PHP基本语法与流程控制/">
+
+
+
+
+
+  <title>PHP基本语法与流程控制 | 流年、乱了浮生</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">流年、乱了浮生</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">“勿忘初心，方得始终”</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/05/PHP基本语法与流程控制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="袁">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="流年、乱了浮生">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PHP基本语法与流程控制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-05T09:47:55+08:00">
+                2019-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="1-PHP概述"><a href="#1-PHP概述" class="headerlink" title="1.PHP概述"></a>1.PHP概述</h4><p>PHP语法借鉴吸收了C语言、java和Perl等流行计算机语言的特点。PHP主要目标是允许网络开发人员快速编写动态页面，简单说PHP主要用于开发各种类型的网站程序。PHP是脚本语言不需要事先编译，在服务器端运行。PHP可以运行在windows、Linux等各种操作系统上。<a id="more"></a></p>
+<h4 id="2-PHP基本语法（一）：初识PHP脚本程序"><a href="#2-PHP基本语法（一）：初识PHP脚本程序" class="headerlink" title="2.PHP基本语法（一）：初识PHP脚本程序"></a>2.PHP基本语法（一）：初识PHP脚本程序</h4><p>PHP语言标记：开始标记：&lt; ?php&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结束标记：?&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输出：echo </p>
+<p>PHP代码可以嵌入到html代码中任何位置，并且可以嵌入任意多个，代码末尾的?&gt;结束标记可以省略。一些PHP语句的结尾要加上；表示一句话的结束，结束标记?&gt;就隐含了一个；所以在?&gt;之前紧挨着的PHP语句可以省略；。</p>
+<p>注释：/*&nbsp;&nbsp; */多行注释&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//单行注释</p>
+<p>空格、制表符、换行这些在PHP中不会显示，可适当利用增加代码可读性。</p>
+<h4 id="3-PHP基本语法（二）：变量、变量类型和常量"><a href="#3-PHP基本语法（二）：变量、变量类型和常量" class="headerlink" title="3.PHP基本语法（二）：变量、变量类型和常量"></a>3.PHP基本语法（二）：变量、变量类型和常量</h4><p>1）变量：是用于临时储存值的容器，PHP在使用变量前不需要事先声明变量，一旦设置了某个变量，就可以在脚本中重复去使用它。</p>
+<p>格式：$变量名=值    unset（变量名称）函数 释放（删除）指定的变量</p>
+<p>变量的命名规则：变量名严格区分大小写，<strong>变量名只能包含字母、数字、下划线并且必须以字母或下划线开头</strong>，最好不要用关键字（如：if、and等）作为变量名称。</p>
+<p>变量的引用赋值：例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$；a=10；$b=$a；echo $b；//此时输出:10</span><br><span class="line">$；a=10；$b=&amp;$a；$b=20；echo $a；//此时输出:20</span><br></pre></td></tr></table></figure>
+<p>2）变量类型：是指保存在该变量中的数据类型，具有相同类型的数据才能被彼此相互操作，也不需要事先声明，变量或常量的数据类型由程序的上下文决定</p>
+<p>使用var_dump（变量名）可以输出变量的类型。</p>
+<p>（1）bool（布尔型）：最简单的类型，变量里存ture和false，如：$a=true;</p>
+<p>（2）int（整型）：变量里存整数，如：$a=1;</p>
+<p>（3）float（浮点型，也称double）：变量里存小数，如：$a=1.1;</p>
+<p>（4）string（字符型）：如：$a=’测试’，字符串可以用单引号、双引号、定界符三种方法来定义</p>
+<p>单引号：单引号中的字符串中不能再包含字符串，如果要用单引号需要用反斜杠（\）转义。PHP不会解析单引号中的变量，所以在定义简单字符串没有特别要求的时候，应使用单引号定义字符串！</p>
+<p>双引号：PHP会解析双引号中的变量名，在双引号中使用变量时需使用{}括起来如:$a=”abc{$b}text….”，不括起来解析变量时会从$开始一直往后读，就会导致报错。</p>
+<p>定界符：&lt;&lt;&lt;之后跟一个标识符（自己命名，命名规则同变量命名规则）开始，然后是字符串内容，最后是同样的标识符表示结束，结束标识符后必须接；例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$a=&lt;&lt;&lt;abc</span><br><span class="line">t&#123;$b&#125;est123...</span><br><span class="line">abc;</span><br></pre></td></tr></table></figure>
+<p>定界符中写入变量时与双引号情况相同，定界符中字符串中可以使用单引号、双引号。</p>
+<p>（5）array（数组）（6）object（对象）（7）resource（资源）这三种暂时先不写，之后再写。</p>
+<p>（8）NULL（空）：将变量直接赋值为null；声明的变量未被赋值；被unset（）函数删除的变量，这三种情况就是空类型。</p>
+<p>3）变量类型相互转换</p>
+<p>自动类型转换：这种是程序运行中不太可控的部分所以在编写代码是不要涉及，不能给自己挖坑是吧。</p>
+<p>强制类型转换：在要转换的变量之前加上括号括起来目标类型如：$b=（int）\$a;这种也用的少尽量不用</p>
+<p>4）常量</p>
+<p>定义：define（’常量名’，值）或者define（”常量名”，值） </p>
+<p>命名：规则和变量相同，也遵循PHP标识的名称规则，按照惯例常量标识符总是大写的，例：define（’TEST’，’测试’），自己定义的常量严格区分大小写。</p>
+<p>特点：常量不能通过赋值语句定义，只能用define（）函数定义； 常量一旦被定义就不能被重新定义或者取消定义；常量的值只能是bool、int、float、string类型。</p>
+<p>预定义常量：其中有些以_开头的，这些预定义常量又叫<a href="https://www.php.net/manual/zh/language.constants.predefined.php" target="_blank" rel="noopener">魔术常量</a>，预定义常量不区分大小写。</p>
+<h4 id="4-PHP基本语法（三）：运算符"><a href="#4-PHP基本语法（三）：运算符" class="headerlink" title="4.PHP基本语法（三）：运算符"></a>4.PHP基本语法（三）：运算符</h4><p>定义：运算符就是对一个或多个操作数（变量或数值）执行某种运算的符号，也称操作符。例：！true、$a + $b、true ？ 1:0，其中！、+、？、：这些就是运算符，其他就叫操作数，根据操作数的个数分为一元运算符、二元运算符、三元运算符。</p>
+<p>1）算术运算符</p>
+<p>​    +：加法；-：取反或减法；*：乘法；/：除法；%：取模</p>
+<p>​    ++：自增：++$a&nbsp;先加一再赋值，$a++&nbsp;先赋值再加一；–：自减：和++相同，自增自减    是对变量而言的。</p>
+<p>2）字符串运算符：只有一个（.）链接运算符，将两个字符串连接起来，例：$a.$b；</p>
+<p>3）赋值运算符（=）：=左边必须是变量，右边可以是一个<a href="https://www.php.net/manual/zh/language.expressions.php" target="_blank" rel="noopener">表达式</a>，也可以是值或一个变量，将右边的值赋给左边的变量。</p>
+<p>其他形式：+=：例：$a+=$b，等同于（$a=$a+$b），&nbsp;-=、/=、*=、%=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同理。</p>
+<p>4）比较运算符：对操作数按照比较运算符的规则进行比较，比较出的结果如果满足规则结果就是true，否则就是false。</p>
+<p>==：是否相等；===：全等（值相等类型也相等）；！=：是否不相等；&lt;&gt;：同！=</p>
+<p>！==：不全等；&nbsp;&nbsp;&nbsp;&lt;：小于；&nbsp;&nbsp;&nbsp;&gt;：大于；&nbsp;&nbsp;&nbsp;&lt;=：小于等于；&nbsp;&nbsp;&nbsp;&gt;=：大于等于</p>
+<p>5）逻辑运算符：与比较运算符相似，满足结果输出true，否则输出false。</p>
+<p>逻辑与（and&nbsp;或&nbsp;&amp;&amp;）：左右两边表达式值都为true时输出true，否则输出false。</p>
+<p>逻辑或（or&nbsp;或&nbsp;&nbsp;||）：左右两边表达式值一个为true，就输出true。</p>
+<p>逻辑亦或（xor）：左右不一样输出true，一样输出false。</p>
+<p>逻辑非（！）：否定当前值。</p>
+<p>6）位运算符：主要用于网站开发，在PHP中用的很少，这里就不写了。</p>
+<p>7）其他运算符</p>
+<p>?&nbsp;:：&nbsp;格式：表达式1？表达式2：表达式3；，如果表达式1的值为true就执行表达式2，表达式1的值为false就执行表达式3</p>
+<p>‘&nbsp;&nbsp;’：可以把系统的命令放在里面执行，例：$a=’ipconfig’；，涉及跨平台。</p>
+<p>@：屏蔽表达式可能发生的错误，例：echo&nbsp;@$a；</p>
+<p>=&gt;、-&gt;、instanceof&nbsp;面向数组和对象使用，之后再写。</p>
+<p>8）运算符的优先级：<a href="https://www.php.net/manual/zh/language.operators.precedence.php" target="_blank" rel="noopener">详情点这里</a> </p>
+<p>优先级归纳：[结合方向（从哪个方向算）]运算符，由高到低（有括号先算括号内的，括号内看成一个整体）：</p>
+<p>[无]递增++递减–、[右]逻辑非！、[左]乘*&nbsp;除/&nbsp;取余%、[左]加&nbsp;减&nbsp;字符串连接符、[无]包含大于号或者小于号的比较运算符、[无]不包含大于号或者小于号的比较运算符、[左]逻辑与&amp;&amp;、[左]逻辑或||、[左]？：、[右]赋值运算符、[左]逻辑亦或xor</p>
+<h4 id="5-流程控制（一）：if语句"><a href="#5-流程控制（一）：if语句" class="headerlink" title="5.流程控制（一）：if语句"></a>5.流程控制（一）：if语句</h4><p>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a=91;</span><br><span class="line">$grade1=60;</span><br><span class="line">$grade2=75;</span><br><span class="line">$grade3=85;</span><br><span class="line">if($a&lt;$grade1)&#123;</span><br><span class="line">    echo&apos;不及格&apos;;</span><br><span class="line">&#125;</span><br><span class="line">elseif($a&lt;$grade2)&#123;</span><br><span class="line">    echo&apos;及格&apos;;</span><br><span class="line">&#125;</span><br><span class="line">elseif($a&lt;$grade3)&#123;</span><br><span class="line">	echo&apos;良好&apos;;</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">    echo&apos;优秀&apos;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;//最终输出优秀</span><br></pre></td></tr></table></figure>
+<p>if、elseif、else等可相互嵌套，可以根据实际情况改变灵活运用，比较简单敲几遍就会了，与C语言语法一样。</p>
+<h4 id="6-流程控制（二）：switch语句"><a href="#6-流程控制（二）：switch语句" class="headerlink" title="6.流程控制（二）：switch语句"></a>6.流程控制（二）：switch语句</h4><p>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a=3;</span><br><span class="line">switch($a)&#123;//括号内是表达式</span><br><span class="line">    case 1://case相当于==，与括号内表达式的值比较</span><br><span class="line">    	echo&apos;今天星期一&apos;;</span><br><span class="line">    	break;//跳出的意思，结束此次switch</span><br><span class="line">    case 2:</span><br><span class="line">    	echo&apos;今天星期二&apos;;</span><br><span class="line">    	break;</span><br><span class="line">    case 2:</span><br><span class="line">    	echo&apos;今天星期二&apos;;</span><br><span class="line">    	break;</span><br><span class="line">    case 3:</span><br><span class="line">    	echo&apos;今天星期三&apos;;</span><br><span class="line">    	break;</span><br><span class="line">    case 4:</span><br><span class="line">    	echo&apos;今天星期四&apos;;</span><br><span class="line">    	break;</span><br><span class="line">    case 5:</span><br><span class="line">    	echo&apos;今天星期五&apos;;</span><br><span class="line">    	break;</span><br><span class="line">    case 6:</span><br><span class="line">    	echo&apos;今天星期六&apos;;</span><br><span class="line">    	break;</span><br><span class="line">    case 7:</span><br><span class="line">    	echo&apos;今天星期日&apos;;</span><br><span class="line">    	break;</span><br><span class="line">    default:</span><br><span class="line">    	echo&apos;无法匹配&apos;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;//最终输出今天星期三</span><br></pre></td></tr></table></figure>
+<p>注：表达式的值最好是整型或者字符串；不能漏掉break；如果某个case语句后面没有接任何语句块，那么就说明这个语句块内容同下；case后面的语句块不需要用{}括起来。</p>
+<h4 id="7-流程控制（三）：循环语句"><a href="#7-流程控制（三）：循环语句" class="headerlink" title="7.流程控制（三）：循环语句"></a>7.流程控制（三）：循环语句</h4><p>1）while循环：while（表达式）{各种语句……}，当表达式值为true执行大括号内语句块，语句块执行结束后返回上面继续判断表达式值是true还是false，按此循环，当值为false时while语句结束，例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a=1;</span><br><span class="line">while($a&lt;5)&#123;</span><br><span class="line">    $a++;</span><br><span class="line">    echo $a.&apos;&lt;br /&gt;&apos;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;//最终输出2、3、4、5</span><br></pre></td></tr></table></figure>
+<p>2）do…while循环：do{各种语句}while(表达式);，与while语句不同的是do…while语句至少要执行一次，例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a=1;</span><br><span class="line">do&#123;</span><br><span class="line">    $a++;</span><br><span class="line">    echo $a.&apos;&lt;br /&gt;&apos;;</span><br><span class="line">&#125;while($a&lt;5);</span><br><span class="line">?&gt;//最终输出2、3、4、5</span><br></pre></td></tr></table></figure>
+<p>3）for循环 ：for(表达式1;表达式2;表达式3){各种语句}，表达式1放初始化语句如：$a=0，表达式2放判断语句，表达式3放对初始化自增或自减的语句，三个表达式位置可以放多个表达式中间用逗号隔开。例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">for($i=1;$i&lt;5;$i++)&#123;</span><br><span class="line">    echo $i.&apos;&lt;br /&gt;&apos;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;//最终输出1、2、3、4</span><br></pre></td></tr></table></figure>
+<h4 id="8-流程控制（四）：特殊的流程控制语句"><a href="#8-流程控制（四）：特殊的流程控制语句" class="headerlink" title="8.流程控制（四）：特殊的流程控制语句"></a>8.流程控制（四）：特殊的流程控制语句</h4><p>1）break语句：用于switch、for、while、do…while、foreach等语句，用于<strong>中断当前语句</strong>，例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">for($i=1;$i&lt;5;$i++)&#123;</span><br><span class="line">	if($i==3)&#123;</span><br><span class="line">        break;//中断本次循环</span><br><span class="line">	&#125;</span><br><span class="line">    echo $i.&apos;&lt;br /&gt;&apos;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;//最终输出1、2</span><br></pre></td></tr></table></figure>
+<p>2）continue语句：只用于循环语句，<strong>跳出本次循环</strong>，例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">for($i=1;$i&lt;5;$i++)&#123;</span><br><span class="line">	if($i==3)&#123;</span><br><span class="line">        continue;//跳出本次循环</span><br><span class="line">	&#125;</span><br><span class="line">    echo $i.&apos;&lt;br /&gt;&apos;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;//最终输出1、2、4</span><br></pre></td></tr></table></figure>
+<p>3）exit（）语句：结束整个程序的执行，括号内可以写字符串用作提示。例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo&apos;星期一&lt;br /&gt;&apos;;</span><br><span class="line">exit(&apos;程序结束！&apos;);</span><br><span class="line">echo&apos;星期二&lt;br /&gt;&apos;;</span><br><span class="line">echo&apos;星期三&lt;br /&gt;&apos;;</span><br><span class="line">echo&apos;星期四&lt;br /&gt;&apos;;</span><br><span class="line">echo&apos;星期五&lt;br /&gt;&apos;;</span><br><span class="line">?&gt;//最终输出星期一、程序结束！</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/30/css知识总结/" rel="next" title="css知识总结">
+                <i class="fa fa-chevron-left"></i> css知识总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="袁">
+            
+              <p class="site-author-name" itemprop="name">袁</p>
+              <p class="site-description motion-element" itemprop="description">“初入网络安全攻防，记录一下自己在网络安全道路上的学习经历”</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-PHP概述"><span class="nav-number">1.</span> <span class="nav-text">1.PHP概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-PHP基本语法（一）：初识PHP脚本程序"><span class="nav-number">2.</span> <span class="nav-text">2.PHP基本语法（一）：初识PHP脚本程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-PHP基本语法（二）：变量、变量类型和常量"><span class="nav-number">3.</span> <span class="nav-text">3.PHP基本语法（二）：变量、变量类型和常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-PHP基本语法（三）：运算符"><span class="nav-number">4.</span> <span class="nav-text">4.PHP基本语法（三）：运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-流程控制（一）：if语句"><span class="nav-number">5.</span> <span class="nav-text">5.流程控制（一）：if语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-流程控制（二）：switch语句"><span class="nav-number">6.</span> <span class="nav-text">6.流程控制（二）：switch语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-流程控制（三）：循环语句"><span class="nav-number">7.</span> <span class="nav-text">7.流程控制（三）：循环语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-流程控制（四）：特殊的流程控制语句"><span class="nav-number">8.</span> <span class="nav-text">8.流程控制（四）：特殊的流程控制语句</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">袁</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
