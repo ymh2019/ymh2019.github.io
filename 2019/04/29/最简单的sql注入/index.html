@@ -141,15 +141,15 @@
 <meta property="og:site_name" content="流年、乱了浮生">
 <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;这里写的是最简单的sql注入，刚入门其他之后再写。首先，先理解一下sql注入，百度百科：所谓sql注入，就是通过把sql命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的sql命令。具体来说，它是利用现有应用程序，将（恶意的）sql命令注入到后台数据库引擎执行的能力，它可以通过在">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/04/29/最简单的sql注入/blog/source/_posts/最简单的sql注入/QQ截图20190428203643.png">
-<meta property="og:image" content="http://yoursite.com/2019/04/29/最简单的sql注入/blog/source/_posts/最简单的sql注入/QQ截图20190428204303.png">
-<meta property="og:image" content="http://yoursite.com/2019/04/29/最简单的sql注入/blog/source/_posts/最简单的sql注入/QQ截图20190428210012.png">
-<meta property="og:image" content="http://yoursite.com/2019/04/29/最简单的sql注入/blog/source/_posts/最简单的sql注入/QQ截图20190428210223.png">
-<meta property="og:updated_time" content="2019-04-29T13:06:52.488Z">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/最简单的sql注入/QQ截图20190428203643.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/最简单的sql注入/QQ截图20190428204303.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/最简单的sql注入/QQ截图20190428210012.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/最简单的sql注入/QQ截图20190428210223.png">
+<meta property="og:updated_time" content="2019-05-04T11:17:11.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最简单的sql注入">
 <meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;这里写的是最简单的sql注入，刚入门其他之后再写。首先，先理解一下sql注入，百度百科：所谓sql注入，就是通过把sql命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的sql命令。具体来说，它是利用现有应用程序，将（恶意的）sql命令注入到后台数据库引擎执行的能力，它可以通过在">
-<meta name="twitter:image" content="http://yoursite.com/2019/04/29/最简单的sql注入/blog/source/_posts/最简单的sql注入/QQ截图20190428203643.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/29/最简单的sql注入/QQ截图20190428203643.png">
 
 
 
@@ -370,17 +370,17 @@
 <p>判断用户名密码是否正确，可以进行sql注入。</p>
 <p>登陆成功welcome.html</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt; </span><br><span class="line">	&lt;title&gt;欢迎登陆&lt;/title&gt; </span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;p&gt;Hello World&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>先进PHPstudy中的MySQL-Front试一下，首先看正确的执行语句<img src="/2019/04/29/最简单的sql注入/blog/source/_posts/最简单的sql注入/QQ截图20190428203643.png" alt="1" title="1"></p>
+<p>先进PHPstudy中的MySQL-Front试一下，首先看正确的执行语句<img src="/2019/04/29/最简单的sql注入/QQ截图20190428203643.png" alt="1" title="1"></p>
 <p>然后就是用’&nbsp;or&nbsp;1=1#构造sql语句：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where username = &apos;&apos; or 1=1#&apos; and password=&apos;123456&apos;</span><br></pre></td></tr></table></figure>
-<p>执行一下：<img src="/2019/04/29/最简单的sql注入/blog/source/_posts/最简单的sql注入/QQ截图20190428204303.png" alt="2" title="2"></p>
+<p>执行一下：<img src="/2019/04/29/最简单的sql注入/QQ截图20190428204303.png" alt="2" title="2"></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以看到执行成功并且表中所有值都显示出来了，这是因为#是注释的意思后面都被注释掉了，这时sql语句就等价与</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where username = &apos;&apos; or 1=1</span><br></pre></td></tr></table></figure>
 <p>那这条语句是成立的，因为1=1是恒成立的，where语句为真。所以这条sql语句又等价于</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user</span><br></pre></td></tr></table></figure>
 <p>这条语句就是检索user表中所有字段。</p>
-<p>这样在web表单提交页面用户名一栏输入’&nbsp;or&nbsp;1=1#，密码随意输就能登陆成功了。试一下<img src="/2019/04/29/最简单的sql注入/blog/source/_posts/最简单的sql注入/QQ截图20190428210012.png" alt="3" title="3"></p>
-<p><br><img src="/2019/04/29/最简单的sql注入/blog/source/_posts/最简单的sql注入/QQ截图20190428210223.png" alt="4" title="4"></p>
+<p>这样在web表单提交页面用户名一栏输入’&nbsp;or&nbsp;1=1#，密码随意输就能登陆成功了。试一下<img src="/2019/04/29/最简单的sql注入/QQ截图20190428210012.png" alt="3" title="3"></p>
+<p><br><img src="/2019/04/29/最简单的sql注入/QQ截图20190428210223.png" alt="4" title="4"></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登陆成功，sql注入完成。可以看出来sql注入就是通过构造特殊的sql语句来进行的，所以学习sql注入首先就要熟练各种sql语句、数据库的增删改查等。</p>
 
       
