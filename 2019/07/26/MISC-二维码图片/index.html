@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Robato Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="流年、乱了浮生" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="前言可以上网查查了解一下二维码的原理，能学到一些知识也对我们做CTF二维码题有一定帮助。二维码出现在CTF题中一般都是穿插在其他题中，或者整体就是考查都是二维码，整体来说不算太难，如果会PS会更容易一些。推荐文章：CTF中二维码题目及答题技巧总结（二）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MISC-二维码图片">
+<meta property="og:url" content="http://yoursite.com/2019/07/26/MISC-二维码图片/index.html">
+<meta property="og:site_name" content="流年、乱了浮生">
+<meta property="og:description" content="前言可以上网查查了解一下二维码的原理，能学到一些知识也对我们做CTF二维码题有一定帮助。二维码出现在CTF题中一般都是穿插在其他题中，或者整体就是考查都是二维码，整体来说不算太难，如果会PS会更容易一些。推荐文章：CTF中二维码题目及答题技巧总结（二）。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/QR_code.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/QQ截图20190726171017.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/QQ截图20190726172644.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/paintpaintpaint.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/QQ截图20190726182408.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/QQ截图20190726183323.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/QQ截图20190726183500.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/QQ截图20190726183842.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/QQ截图20190726184616.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/QQ截图20190726184645.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/QQ截图20190726184755.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/QQ截图20190726220908.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/masterGO.gif">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/QQ截图20190726235155.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/QQ截图20190726235207.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/misc100.bmp">
+<meta property="og:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/QQ截图20190727000747.png">
+<meta property="og:updated_time" content="2019-08-06T07:36:49.997Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MISC-二维码图片">
+<meta name="twitter:description" content="前言可以上网查查了解一下二维码的原理，能学到一些知识也对我们做CTF二维码题有一定帮助。二维码出现在CTF题中一般都是穿插在其他题中，或者整体就是考查都是二维码，整体来说不算太难，如果会PS会更容易一些。推荐文章：CTF中二维码题目及答题技巧总结（二）。">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/26/MISC-二维码图片/QR_code.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/26/MISC-二维码图片/">
+
+
+
+
+
+  <title>MISC-二维码图片 | 流年、乱了浮生</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">流年、乱了浮生</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">“勿忘初心，方得始终”</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/26/MISC-二维码图片/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="袁">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="流年、乱了浮生">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MISC-二维码图片</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-26T13:41:59+08:00">
+                2019-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>可以上网查查了解一下二维码的原理，能学到一些知识也对我们做CTF二维码题有一定帮助。二维码出现在CTF题中一般都是穿插在其他题中，或者整体就是考查都是二维码，整体来说不算太难，如果会PS会更容易一些。推荐文章：<a href="https://mp.weixin.qq.com/s/1C98fhfoP81onob6a_v6Ag" target="_blank" rel="noopener">CTF中二维码题目及答题技巧总结（二）</a>。<a id="more"></a></p>
+<h2 id="题目复现"><a href="#题目复现" class="headerlink" title="题目复现"></a>题目复现</h2><h3 id="实验吧-复杂的QR-code"><a href="#实验吧-复杂的QR-code" class="headerlink" title="实验吧 - 复杂的QR_code"></a>实验吧 - 复杂的QR_code</h3><p>题目地址：<a href="http://www.shiyanbar.com/ctf/1856" target="_blank" rel="noopener">http://www.shiyanbar.com/ctf/1856</a>解题链接：<a href="http://ctf5.shiyanbar.com/stega/QR_code.png" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/stega/QR_code.png</a></p>
+<p>打开链接，发现是一张二维码，尝试扫一下</p>
+<p><img src="/2019/07/26/MISC-二维码图片/QR_code.png" alt="1"></p>
+<p>扫出来是：secret is here</p>
+<p>然后放在winhex里看一下，发现有一个隐藏的zip文件，zip里面有一个txt文件</p>
+<p><img src="/2019/07/26/MISC-二维码图片/QQ截图20190726171017.png" alt="2"></p>
+<p>所以binwalk一下，得到一个压缩包打开，是一个加密的txt文件，文件名叫4number.txt，密码应该就是4个数字了，那就暴力破解，可以用archpr（也可以用kali带的叫<a href="http://topspeedsnail.com/fcrackzip-crack-zip-password/" target="_blank" rel="noopener">fcrackzip</a>的工具）</p>
+<p><img src="/2019/07/26/MISC-二维码图片/QQ截图20190726172644.png" alt="3"></p>
+<p>密码就是7639了，打开文件输入密码得到flag：CTF{vjpw_wnoei}</p>
+<h3 id="bugkuCTF-图穷匕见"><a href="#bugkuCTF-图穷匕见" class="headerlink" title="bugkuCTF - 图穷匕见"></a>bugkuCTF - 图穷匕见</h3><p>解题链接：<a href="https://ctf.bugku.com/files/f6697e1f904a0c30b56f72fcf0023434/paintpaintpaint.jpg" target="_blank" rel="noopener">https://ctf.bugku.com/files/f6697e1f904a0c30b56f72fcf0023434/paintpaintpaint.jpg</a></p>
+<p><img src="/2019/07/26/MISC-二维码图片/paintpaintpaint.jpg" alt="4"></p>
+<p>保存图片，用winhex打开找到jpg文件尾<code>FF D9</code>发现后有一长串数字</p>
+<p><img src="/2019/07/26/MISC-二维码图片/QQ截图20190726182408.png" alt="5"></p>
+<p>观察下应该是16进制，将之后的数据保存到txt中，用notepad++打开，有一个插件可以解码</p>
+<p><img src="/2019/07/26/MISC-二维码图片/QQ截图20190726183323.png" alt="6"></p>
+<p><img src="/2019/07/26/MISC-二维码图片/QQ截图20190726183500.png" alt="7"></p>
+<p>得到很多坐标，所以就要“画图”了，用gnuplot（<a href="https://sourceforge.net/projects/gnuplot/" target="_blank" rel="noopener">下载</a>）这个工具将这些坐标做成一张图即可，不过要先将坐标改成gnuplot能识别的坐标</p>
+<p><img src="/2019/07/26/MISC-二维码图片/QQ截图20190726183842.png" alt="8"></p>
+<p>把txt文件放到gnuplot的bin目录下，运行gnuplot</p>
+<p><img src="/2019/07/26/MISC-二维码图片/QQ截图20190726184616.png" alt="9"></p>
+<p><img src="/2019/07/26/MISC-二维码图片/QQ截图20190726184645.png" alt="10"></p>
+<p>得到一个二维码</p>
+<p><img src="/2019/07/26/MISC-二维码图片/QQ截图20190726184755.png" alt="11"></p>
+<p>扫描得到flag：flag{40fc0a979f759c8892f4dc045e28b820}</p>
+<h3 id="bugkuCTF-很普通的数独"><a href="#bugkuCTF-很普通的数独" class="headerlink" title="bugkuCTF - 很普通的数独"></a>bugkuCTF - 很普通的数独</h3><p>题目地址：<a href="https://ctf.bugku.com/challenges#%E5%BE%88%E6%99%AE%E9%80%9A%E7%9A%84%E6%95%B0%E7%8B%AC(ISCCCTF)" target="_blank" rel="noopener">https://ctf.bugku.com/challenges#%E5%BE%88%E6%99%AE%E9%80%9A%E7%9A%84%E6%95%B0%E7%8B%AC(ISCCCTF)</a></p>
+<p>下载压缩包后缀名改成.zip，打开后发现有25张数独的图片</p>
+<p><img src="/2019/07/26/MISC-二维码图片/QQ截图20190726220908.png" alt="12"></p>
+<p>然后呢？？看了大佬wp才明白这题是个啥</p>
+<p>把这25张图片弄成5x5排列发现这其实是张二维码。1.png、5.png、21.png仔细看看就是是二维码的定位形状，三个角上的方形块，1.png是二维码右上角、5.png是二维码左下角、21.png是二维码左上角，所以把这三张换下顺序，1.png、5.png、21.png重命名成:5.png、21.png、1.png。</p>
+<p>然后把有数字的格记为数字1(代表黑色)，没有的记为0(代表白色)，保存为txt文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">111111101010101000101000001111110000101111111</span><br><span class="line">100000101100111101010011101100011001001000001</span><br><span class="line">101110101110011111010011111101000101001011101</span><br><span class="line">101110101101100010001010000011110001101011101</span><br><span class="line">101110100011100100001111101111111011101011101</span><br><span class="line">100000101100100000011000100001110100001000001</span><br><span class="line">111111101010101010101010101010101011101111111</span><br><span class="line">000000000011001101001000110100110011100000000</span><br><span class="line">110011100100100001111111100100101000000101111</span><br><span class="line">101001001011111111101110101011110101101001100</span><br><span class="line">100000111100100100000110001101001101010001010</span><br><span class="line">001100010011010001010011000100000010110010000</span><br><span class="line">010110101010001111110100011101001110101101111</span><br><span class="line">100011000100011100111011101101100101101110001</span><br><span class="line">001100110100000000010010000111100101101011010</span><br><span class="line">101000001011010111110011011111101001110100011</span><br><span class="line">110111110111011001101100010100001110000100000</span><br><span class="line">110101000010101000011101101101110101101001100</span><br><span class="line">010011111110001011111010001000011011101101100</span><br><span class="line">011001011001010101100011110101001100001010010</span><br><span class="line">010111111111101011111111101101101111111111100</span><br><span class="line">011110001100000100001000101000100100100011110</span><br><span class="line">111110101110011100111010110100110100101010010</span><br><span class="line">110010001011101011101000111100000011100010000</span><br><span class="line">101011111011100111101111111100001010111110010</span><br><span class="line">110100011000111000100111101101111101000100010</span><br><span class="line">111101111110001001000011010110001111110111110</span><br><span class="line">011001010101000110010100010001000101101010001</span><br><span class="line">011101110101101101100100001101101000111101001</span><br><span class="line">110110001001101100010101101111110100101100110</span><br><span class="line">000011100111000000000100001010101111100010010</span><br><span class="line">111010010011110011101110010100001011111010010</span><br><span class="line">101001100010111111110100000100001010101010100</span><br><span class="line">000010011001001101110101001111100101111101101</span><br><span class="line">000010111101110001101011000001000101110100110</span><br><span class="line">011110011010100010100000011011000001110010000</span><br><span class="line">100110100100001101111111101100101110111110011</span><br><span class="line">000000001111110101101000101011100100100011010</span><br><span class="line">111111100011111011011010101101110011101011110</span><br><span class="line">100000101110101101101000111110010001100010001</span><br><span class="line">101110101011100001111111101101001000111111011</span><br><span class="line">101110100110111101101000001001101100011101101</span><br><span class="line">101110100000011101100001101010110010010010001</span><br><span class="line">100000101011001011111011001011000011010110000</span><br><span class="line">111111101010101001111011110101101110000101101</span><br></pre></td></tr></table></figure>
+<p>再把这些数字用python脚本画出二维码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">x = <span class="number">45</span></span><br><span class="line">y = <span class="number">45</span></span><br><span class="line"> </span><br><span class="line">im = Image.new(<span class="string">'RGB'</span>, (x, y))</span><br><span class="line">white = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line">black = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'file.txt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(x):</span><br><span class="line">        ff = f.readline()</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(y):</span><br><span class="line">            <span class="keyword">if</span> ff[j] == <span class="string">'1'</span>:</span><br><span class="line">                im.putpixel((i, j), black)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                im.putpixel((i, j), white)</span><br><span class="line">im.save(<span class="string">"1.jpg"</span>)</span><br></pre></td></tr></table></figure>
+<p>把txt文件放到python目录下，运行python脚本，得到二维码（如果运行python脚本是出现<code>UnicodeDecodeError: ‘gbk’ codec can’t decode byte 0xfe in position 0: illegal multibyte sequence</code>错误，用notepad++打开txt文件将编码改为utf-8编码就行了）</p>
+<p><img src="/2019/07/26/MISC-二维码图片/1.jpg" alt="13"></p>
+<p>扫描二维码，得到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vm0xd1NtUXlWa1pPVldoVFlUSlNjRlJVVGtOamJGWnlWMjFHVlUxV1ZqTldNakZIWVcxS1IxTnNhRmhoTVZweVdWUkdXbVZHWkhOWGJGcHBWa1paZWxaclpEUmhNVXBYVW14V2FHVnFRVGs9</span><br></pre></td></tr></table></figure>
+<p>多次base64解码应该是7次，得到flag：flag{y0ud1any1s1}</p>
+<p>参考文章：<a href="https://blog.csdn.net/zz_Caleb/article/details/88800201" target="_blank" rel="noopener">https://blog.csdn.net/zz_Caleb/article/details/88800201</a></p>
+<h3 id="bugkuCTF-闪的好快"><a href="#bugkuCTF-闪的好快" class="headerlink" title="bugkuCTF - 闪的好快"></a>bugkuCTF - 闪的好快</h3><p>解题链接：<a href="https://ctf.bugku.com/files/6dcac03199e58749725cbcd9cc958a9b/masterGO.gif" target="_blank" rel="noopener">https://ctf.bugku.com/files/6dcac03199e58749725cbcd9cc958a9b/masterGO.gif</a></p>
+<p>打开后是一个二维码的gif动图</p>
+<p><img src="/2019/07/26/MISC-二维码图片/masterGO.gif" alt="14"></p>
+<p>那就把每帧分开，可以用WPS图片查看也可以用stegsolve的Analysis-&gt;Frame Browser查看，有18张图片，挨个扫下得到flag：SYC{F1aSh_so_f4sT}</p>
+<h3 id="bugkuCTF-多种方法解决"><a href="#bugkuCTF-多种方法解决" class="headerlink" title="bugkuCTF - 多种方法解决"></a>bugkuCTF - 多种方法解决</h3><p>解题链接：<a href="http://123.206.87.240:8002/misc/3.zip" target="_blank" rel="noopener">http://123.206.87.240:8002/misc/3.zip</a></p>
+<p>题目内容：在做题过程中你会得到一个二维码图片</p>
+<p>下载压缩包打开发现是一个exe文件，放到winhex里面查看发现</p>
+<p><img src="/2019/07/26/MISC-二维码图片/QQ截图20190726235155.png" alt="15"></p>
+<p><img src="/2019/07/26/MISC-二维码图片/QQ截图20190726235207.png" alt="16"></p>
+<p>所以这里要base64编码还原成图片，将文件后缀名改成.txt复制内容，<a href="http://imgbase64.duoshitong.com/" target="_blank" rel="noopener">在线转换</a>，得到二维码</p>
+<p><img src="/2019/07/26/MISC-二维码图片/2.png" alt="17"></p>
+<p>扫描二维码得到flag：KEY{dca57f966e4e4e31fd5b15417da63269}</p>
+<h3 id="bugkuCTF-普通的二维码"><a href="#bugkuCTF-普通的二维码" class="headerlink" title="bugkuCTF - 普通的二维码"></a>bugkuCTF - 普通的二维码</h3><p>题目地址：<a href="https://ctf.bugku.com/challenges#%E6%99%AE%E9%80%9A%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%A0%81" target="_blank" rel="noopener">https://ctf.bugku.com/challenges#%E6%99%AE%E9%80%9A%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%A0%81</a></p>
+<p>下载压缩包打开有一张二维码图片</p>
+<p><img src="/2019/07/26/MISC-二维码图片/misc100.bmp" alt="18"></p>
+<p>扫描得到：哈哈!就不告诉你flag就在这里!</p>
+<p>没有什么用，那应该有隐藏的文件，放到winhex中查看</p>
+<p><img src="/2019/07/26/MISC-二维码图片/QQ截图20190727000747.png" alt="19"></p>
+<p>末尾有一串数字，观察右边数字只有0~7，所以可能是八进制，查下ASCII码表发现146就是f，然后就是3个数字一组，由八进制转换成字符了，可以使用python脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a=[<span class="number">146</span>,<span class="number">154</span>,<span class="number">141</span>,<span class="number">147</span>,<span class="number">173</span>,<span class="number">110</span>,<span class="number">141</span>,<span class="number">166</span>,<span class="number">145</span>,<span class="number">137</span>,<span class="number">171</span>,<span class="number">60</span>,<span class="number">125</span>,<span class="number">137</span>,<span class="number">120</span>,<span class="number">171</span>,<span class="number">137</span>,<span class="number">163</span>,<span class="number">143</span>,<span class="number">162</span>,<span class="number">151</span>,<span class="number">160</span>,<span class="number">164</span>,<span class="number">137</span>,<span class="number">117</span>,<span class="number">164</span>,<span class="number">143</span>,<span class="number">137</span>,<span class="number">124</span>,<span class="number">157</span>,<span class="number">137</span>,<span class="number">124</span>,<span class="number">145</span>,<span class="number">156</span>,<span class="number">137</span>,<span class="number">101</span>,<span class="number">163</span>,<span class="number">143</span>,<span class="number">151</span>,<span class="number">151</span>,<span class="number">41</span>,<span class="number">175</span>]</span><br><span class="line">j=<span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">	j = j+chr(int(str(i),<span class="number">8</span>))</span><br><span class="line"><span class="keyword">print</span> (j)</span><br></pre></td></tr></table></figure>
+<p>运行脚本得到flag：flag{Have_y0U_Py_script_Otc_To_Ten_Ascii!}</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/21/SQL注入-二-联合查询注入/" rel="next" title="SQL注入<二>-联合查询注入">
+                <i class="fa fa-chevron-left"></i> SQL注入<二>-联合查询注入
+              </二></a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/27/SQL注入-三-bool盲注/" rel="prev" title="SQL注入<三>-bool盲注">
+                SQL注入<三>-bool盲注 <i class="fa fa-chevron-right"></i>
+              </三></a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="袁">
+            
+              <p class="site-author-name" itemprop="name">袁</p>
+              <p class="site-description motion-element" itemprop="description">“初入网络安全攻防，记录一下自己在网络安全道路上的学习经历”</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目复现"><span class="nav-number">2.</span> <span class="nav-text">题目复现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验吧-复杂的QR-code"><span class="nav-number">2.1.</span> <span class="nav-text">实验吧 - 复杂的QR_code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bugkuCTF-图穷匕见"><span class="nav-number">2.2.</span> <span class="nav-text">bugkuCTF - 图穷匕见</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bugkuCTF-很普通的数独"><span class="nav-number">2.3.</span> <span class="nav-text">bugkuCTF - 很普通的数独</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bugkuCTF-闪的好快"><span class="nav-number">2.4.</span> <span class="nav-text">bugkuCTF - 闪的好快</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bugkuCTF-多种方法解决"><span class="nav-number">2.5.</span> <span class="nav-text">bugkuCTF - 多种方法解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bugkuCTF-普通的二维码"><span class="nav-number">2.6.</span> <span class="nav-text">bugkuCTF - 普通的二维码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">袁</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

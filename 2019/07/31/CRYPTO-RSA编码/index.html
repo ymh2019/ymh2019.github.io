@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Robato Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="流年、乱了浮生" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="概论RSA算法RSA算法是现今使用最广泛的公钥密码算法，也是号称地球上最安全的加密算法。根据密钥的使用方法，可以将密码分为对称密码和公钥密码。对称密码：加密和解密使用同一种密钥的方式，公钥密码：加密和解密使用不同的密码的方式，因此公钥密码通常也称为非对称密码。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CRYPTO-RSA编码">
+<meta property="og:url" content="http://yoursite.com/2019/07/31/CRYPTO-RSA编码/index.html">
+<meta property="og:site_name" content="流年、乱了浮生">
+<meta property="og:description" content="概论RSA算法RSA算法是现今使用最广泛的公钥密码算法，也是号称地球上最安全的加密算法。根据密钥的使用方法，可以将密码分为对称密码和公钥密码。对称密码：加密和解密使用同一种密钥的方式，公钥密码：加密和解密使用不同的密码的方式，因此公钥密码通常也称为非对称密码。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/07/31/CRYPTO-RSA编码/QQ截图20190801174818.png">
+<meta property="og:updated_time" content="2019-08-06T06:28:17.552Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CRYPTO-RSA编码">
+<meta name="twitter:description" content="概论RSA算法RSA算法是现今使用最广泛的公钥密码算法，也是号称地球上最安全的加密算法。根据密钥的使用方法，可以将密码分为对称密码和公钥密码。对称密码：加密和解密使用同一种密钥的方式，公钥密码：加密和解密使用不同的密码的方式，因此公钥密码通常也称为非对称密码。">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/31/CRYPTO-RSA编码/QQ截图20190801174818.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/31/CRYPTO-RSA编码/">
+
+
+
+
+
+  <title>CRYPTO-RSA编码 | 流年、乱了浮生</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">流年、乱了浮生</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">“勿忘初心，方得始终”</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/CRYPTO-RSA编码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="袁">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="流年、乱了浮生">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CRYPTO-RSA编码</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-31T22:19:04+08:00">
+                2019-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><h3 id="RSA算法"><a href="#RSA算法" class="headerlink" title="RSA算法"></a>RSA算法</h3><p>RSA算法是现今使用最广泛的公钥密码算法，也是号称地球上最安全的加密算法。根据密钥的使用方法，可以将密码分为对称密码和公钥密码。对称密码：加密和解密使用同一种密钥的方式，公钥密码：加密和解密使用不同的密码的方式，因此公钥密码通常也称为非对称密码。<a id="more"></a></p>
+<h3 id="RSA加密"><a href="#RSA加密" class="headerlink" title="RSA加密"></a>RSA加密</h3><p>加密要用到公匙（n，e），公匙是公开的任何人可见，通式</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c ≡ m^e (mod n)</span><br></pre></td></tr></table></figure>
+<p>其中m就是明文了，但m必须是整数（字符串可以取ascii值或unicode值），且m必须小于n。</p>
+<h3 id="RSA解密"><a href="#RSA解密" class="headerlink" title="RSA解密"></a>RSA解密</h3><p>得到c，使用私匙（n，d）解密，私匙是私有的，通式</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m＝c^d mod n</span><br></pre></td></tr></table></figure>
+<h3 id="RSA加密原理"><a href="#RSA加密原理" class="headerlink" title="RSA加密原理"></a>RSA加密原理</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">步骤</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">找出质数</td>
+<td style="text-align:center">p 、q</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">计算公共模数</td>
+<td style="text-align:center">n = p * q</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">欧拉函数</td>
+<td style="text-align:center">φ(N) = (p-1)(q-1)</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">计算公钥e</td>
+<td style="text-align:center">1 &lt; e &lt; φ(N)</td>
+<td style="text-align:center">e的取值必须是整数 e和 φ(n) 必须是互质数</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">计算私钥d</td>
+<td style="text-align:center">e * d % φ(n) = 1</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">加密</td>
+<td style="text-align:center">c＝m^e mod n</td>
+<td style="text-align:center">c：密文 m：明文</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">解密</td>
+<td style="text-align:center">m＝c^d mod n</td>
+<td style="text-align:center">c：密文 m：明文</td>
+</tr>
+</tbody>
+</table>
+<p>RSA算法原理详解参考文章：<a href="http://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html</a></p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="实验吧-RSAROLL"><a href="#实验吧-RSAROLL" class="headerlink" title="实验吧 - RSAROLL"></a>实验吧 - RSAROLL</h3><p>题目地址：<a href="http://www.shiyanbar.com/ctf/1918" target="_blank" rel="noopener">http://www.shiyanbar.com/ctf/1918</a></p>
+<p>打开链接</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="number">920139713</span>,<span class="number">19</span>&#125;</span><br><span class="line"> </span><br><span class="line"><span class="number">704796792</span></span><br><span class="line"><span class="number">752211152</span></span><br><span class="line"><span class="number">274704164</span></span><br><span class="line"><span class="number">18414022</span></span><br><span class="line"><span class="number">368270835</span></span><br><span class="line"><span class="number">483295235</span></span><br><span class="line"><span class="number">263072905</span></span><br><span class="line"><span class="number">459788476</span></span><br><span class="line"><span class="number">483295235</span></span><br><span class="line"><span class="number">459788476</span></span><br><span class="line"><span class="number">663551792</span></span><br><span class="line"><span class="number">475206804</span></span><br><span class="line"><span class="number">459788476</span></span><br><span class="line"><span class="number">428313374</span></span><br><span class="line"><span class="number">475206804</span></span><br><span class="line"><span class="number">459788476</span></span><br><span class="line"><span class="number">425392137</span></span><br><span class="line"><span class="number">704796792</span></span><br><span class="line"><span class="number">458265677</span></span><br><span class="line"><span class="number">341524652</span></span><br><span class="line"><span class="number">483295235</span></span><br><span class="line"><span class="number">534149509</span></span><br><span class="line"><span class="number">425392137</span></span><br><span class="line"><span class="number">428313374</span></span><br><span class="line"><span class="number">425392137</span></span><br><span class="line"><span class="number">341524652</span></span><br><span class="line"><span class="number">458265677</span></span><br><span class="line"><span class="number">263072905</span></span><br><span class="line"><span class="number">483295235</span></span><br><span class="line"><span class="number">828509797</span></span><br><span class="line"><span class="number">341524652</span></span><br><span class="line"><span class="number">425392137</span></span><br><span class="line"><span class="number">475206804</span></span><br><span class="line"><span class="number">428313374</span></span><br><span class="line"><span class="number">483295235</span></span><br><span class="line"><span class="number">475206804</span></span><br><span class="line"><span class="number">459788476</span></span><br><span class="line"><span class="number">306220148</span></span><br></pre></td></tr></table></figure>
+<p>分析可知，<code>{920139713,19}</code>是公匙，n=920139713，e=19，下面的就是密文了也就是c={704796792<br>，752211152，……}，根据这些求明文{m1，m2，……}</p>
+<p>解题步骤：</p>
+<p>1.分解n，得到p，q</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">crackN</span><span class="params">(n)</span>:</span></span><br><span class="line">    i=<span class="number">2</span></span><br><span class="line">    <span class="keyword">while</span> i&lt;n:</span><br><span class="line">        <span class="keyword">if</span> n % i==<span class="number">0</span>:</span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">        i=i+<span class="number">1</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span>(i)</span><br></pre></td></tr></table></figure>
+<p>2.根据p,q获得欧拉数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">o_n=int(p<span class="number">-1</span>)*int((n/p)<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+<p>3.根据扩展欧几里得算法获得d</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">exgcd</span><span class="params">(m,n,x,y)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">                x = <span class="number">1</span></span><br><span class="line">                y = <span class="number">0</span></span><br><span class="line">                <span class="keyword">return</span> (m,x,y)</span><br><span class="line">        a1 = b = <span class="number">1</span></span><br><span class="line">        a = b1 = <span class="number">0</span></span><br><span class="line">        c = m</span><br><span class="line">        d = n</span><br><span class="line">        q = int(c/d)</span><br><span class="line">        r = c%d</span><br><span class="line">        <span class="keyword">while</span> r:</span><br><span class="line">                c = d</span><br><span class="line">                d = r</span><br><span class="line">                t = a1</span><br><span class="line">                a1 = a</span><br><span class="line">                a = t-q*a</span><br><span class="line">                t = b1</span><br><span class="line">                b1 = b</span><br><span class="line">                b = t-q*b</span><br><span class="line">                q = int(c/d)</span><br><span class="line">                r = c%d</span><br><span class="line">        x = a</span><br><span class="line">        y = b</span><br><span class="line">        <span class="keyword">return</span> (d,x,y)</span><br></pre></td></tr></table></figure>
+<p>返回值为数组</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d=exgcd(o_n,e,<span class="number">0</span>,<span class="number">0</span>)[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<p>4.根据d解密密文c获得m</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chr(pow(c,d,n))</span><br></pre></td></tr></table></figure>
+<p>5.遍历密文数组c获得m序列</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s=<span class="string">""</span></span><br><span class="line"><span class="keyword">while</span> k&lt;len(c):</span><br><span class="line">              s=s+(chr(pow(c[k],d,n)))</span><br><span class="line">              k=k+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>最终脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">e=<span class="number">19</span></span><br><span class="line">n=<span class="number">920139713</span></span><br><span class="line">c=[</span><br><span class="line"><span class="number">704796792</span>,</span><br><span class="line"><span class="number">752211152</span>,</span><br><span class="line"><span class="number">274704164</span>,</span><br><span class="line"><span class="number">18414022</span>,</span><br><span class="line"><span class="number">368270835</span>,</span><br><span class="line"><span class="number">483295235</span>,</span><br><span class="line"><span class="number">263072905</span>,</span><br><span class="line"><span class="number">459788476</span>,</span><br><span class="line"><span class="number">483295235</span>,</span><br><span class="line"><span class="number">459788476</span>,</span><br><span class="line"><span class="number">663551792</span>,</span><br><span class="line"><span class="number">475206804</span>,</span><br><span class="line"><span class="number">459788476</span>,</span><br><span class="line"><span class="number">428313374</span>,</span><br><span class="line"><span class="number">475206804</span>,</span><br><span class="line"><span class="number">459788476</span>,</span><br><span class="line"><span class="number">425392137</span>,</span><br><span class="line"><span class="number">704796792</span>,</span><br><span class="line"><span class="number">458265677</span>,</span><br><span class="line"><span class="number">341524652</span>,</span><br><span class="line"><span class="number">483295235</span>,</span><br><span class="line"><span class="number">534149509</span>,</span><br><span class="line"><span class="number">425392137</span>,</span><br><span class="line"><span class="number">428313374</span>,</span><br><span class="line"><span class="number">425392137</span>,</span><br><span class="line"><span class="number">341524652</span>,</span><br><span class="line"><span class="number">458265677</span>,</span><br><span class="line"><span class="number">263072905</span>,</span><br><span class="line"><span class="number">483295235</span>,</span><br><span class="line"><span class="number">828509797</span>,</span><br><span class="line"><span class="number">341524652</span>,</span><br><span class="line"><span class="number">425392137</span>,</span><br><span class="line"><span class="number">475206804</span>,</span><br><span class="line"><span class="number">428313374</span>,</span><br><span class="line"><span class="number">483295235</span>,</span><br><span class="line"><span class="number">475206804</span>,</span><br><span class="line"><span class="number">459788476</span>,</span><br><span class="line"><span class="number">306220148</span>,</span><br><span class="line">]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">exgcd</span><span class="params">(m,n,x,y)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">                x = <span class="number">1</span></span><br><span class="line">                y = <span class="number">0</span></span><br><span class="line">                <span class="keyword">return</span> (m,x,y)</span><br><span class="line">        a1 = b = <span class="number">1</span></span><br><span class="line">        a = b1 = <span class="number">0</span></span><br><span class="line">        c = m</span><br><span class="line">        d = n</span><br><span class="line">        q = int(c/d)</span><br><span class="line">        r = c%d</span><br><span class="line">        <span class="keyword">while</span> r:</span><br><span class="line">                c = d</span><br><span class="line">                d = r</span><br><span class="line">                t = a1</span><br><span class="line">                a1 = a</span><br><span class="line">                a = t-q*a</span><br><span class="line">                t = b1</span><br><span class="line">                b1 = b</span><br><span class="line">                b = t-q*b</span><br><span class="line">                q = int(c/d)</span><br><span class="line">                r = c%d</span><br><span class="line">        x = a</span><br><span class="line">        y = b</span><br><span class="line">        <span class="keyword">return</span> (d,x,y)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">crackN</span><span class="params">(n)</span>:</span></span><br><span class="line">    i=<span class="number">2</span></span><br><span class="line">    <span class="keyword">while</span> i&lt;n:</span><br><span class="line">        <span class="keyword">if</span> n % i==<span class="number">0</span>:</span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">        i=i+<span class="number">1</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span>(i)</span><br><span class="line">p=crackN(n)</span><br><span class="line">k=<span class="number">0</span></span><br><span class="line">o_n=int(p<span class="number">-1</span>)*int((n/p)<span class="number">-1</span>)</span><br><span class="line">d=exgcd(o_n,e,<span class="number">0</span>,<span class="number">0</span>)[<span class="number">2</span>]</span><br><span class="line">s=<span class="string">""</span></span><br><span class="line"><span class="keyword">while</span> k&lt;len(c):</span><br><span class="line">              s=s+(chr(pow(c[k],d,n)))</span><br><span class="line">              k=k+<span class="number">1</span></span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+<p>运行</p>
+<p><img src="/2019/07/31/CRYPTO-RSA编码/QQ截图20190801174818.png" alt="1"></p>
+<p>得到flag：flag{13212je2ue28fy71w8u87y31r78eu1e2}</p>
+<p>参考文章：<a href="https://blog.csdn.net/janelml/article/details/89877099" target="_blank" rel="noopener">https://blog.csdn.net/janelml/article/details/89877099</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>CTF中关于RSA的题还是挺多的，而且是有点难的，基本上都要写脚本才能做出来，也需要一些辅助的工具什么的，比如yafu、rsatool等。有一个很重要也是必须的一个库就是gmpy2，gmpy2是Python的一个扩展库，是对GMP的封装，它的前身是gmpy，经过其作者的调整和封装，使得gmpy2的使用大大简化，可以先安装下。本来还要写Jarvis&nbsp;OJ上的几道RSA的题，脚本要在网上找但是都要用到这个gmpy2但是这个gmpy2我弄个快一天了还是没弄好自己又不会写脚本，所以就没写，等之后把gmpy2装好了再补吧。</p>
+<p>Jarvis&nbsp;OJ：平台地址：<a href="http://www.jarvisoj.com" target="_blank" rel="noopener">www.jarvisoj.com</a></p>
+<p>yafu：下载地址：<a href="https://sourceforge.net/projects/yafu/安装使用：https://www.cnblogs.com/pcat/p/7508205.html" target="_blank" rel="noopener">https://sourceforge.net/projects/yafu/安装使用：https://www.cnblogs.com/pcat/p/7508205.html</a></p>
+<p>gmpy2：安装使用：<a href="https://blog.csdn.net/x_yhy/article/details/83903367" target="_blank" rel="noopener">https://blog.csdn.net/x_yhy/article/details/83903367</a>、<a href="https://www.cnblogs.com/pcat/p/5746821.html" target="_blank" rel="noopener">https://www.cnblogs.com/pcat/p/5746821.html</a></p>
+<p>其他常用工具：<a href="https://www.lizenghai.com/archives/24289.html" target="_blank" rel="noopener">https://www.lizenghai.com/archives/24289.html</a></p>
+<p>CTF中RSA常见攻击方法：<a href="https://www.anquanke.com/post/id/84632" target="_blank" rel="noopener">https://www.anquanke.com/post/id/84632</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/28/SQL注入-四-时间盲注/" rel="next" title="SQL注入<四>-时间盲注">
+                <i class="fa fa-chevron-left"></i> SQL注入<四>-时间盲注
+              </四></a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="袁">
+            
+              <p class="site-author-name" itemprop="name">袁</p>
+              <p class="site-description motion-element" itemprop="description">“初入网络安全攻防，记录一下自己在网络安全道路上的学习经历”</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概论"><span class="nav-number">1.</span> <span class="nav-text">概论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RSA算法"><span class="nav-number">1.1.</span> <span class="nav-text">RSA算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RSA加密"><span class="nav-number">1.2.</span> <span class="nav-text">RSA加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RSA解密"><span class="nav-number">1.3.</span> <span class="nav-text">RSA解密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RSA加密原理"><span class="nav-number">1.4.</span> <span class="nav-text">RSA加密原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">2.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验吧-RSAROLL"><span class="nav-number">2.1.</span> <span class="nav-text">实验吧 - RSAROLL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">袁</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
