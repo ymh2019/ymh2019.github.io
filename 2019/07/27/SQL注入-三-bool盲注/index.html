@@ -155,7 +155,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/07/27/SQL注入-三-bool盲注/QQ截图20190806153237.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/27/SQL注入-三-bool盲注/QQ截图20190806153253.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/27/SQL注入-三-bool盲注/QQ截图20190806153305.png">
-<meta property="og:updated_time" content="2019-08-06T07:43:50.522Z">
+<meta property="og:updated_time" content="2019-08-14T15:39:27.916Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL注入&lt;三&gt;-bool盲注">
 <meta name="twitter:description" content="概论盲注：在不知道数据库返回值的情况下对数据中的内容进行猜测，实施SQL注入。盲注一般分为布尔盲注（Booleanbase）、基于时间的盲注（Timebase）、报错的盲注（Errorbase）。 布尔型：页面只返回True和False两种类型页面。利用页面返回不同，逐个猜解数据 常用函数：">
@@ -373,7 +373,7 @@
 <p><strong>布尔型</strong>：页面只返回True和False两种类型页面。利用页面返回不同，逐个猜解数据</p>
 <p><strong>常用函数</strong>：<a id="more"></a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">length(str)：返回str字符串的长度。</span><br><span class="line">substr(str, pos, len)：将str从pos位置开始截取len长度的字符进行返回。注意这里的pos位置是从<span class="number">1</span>开始的，不是数组的<span class="number">0</span>开始</span><br><span class="line">mid(str,pos,len):同上</span><br><span class="line">ascii(str)：返回字符串str的最左面字符的ASCII代码值。</span><br><span class="line">ord(str):同上，返回ascii码</span><br><span class="line"><span class="keyword">if</span>(a,b,c) :a为条件，a为true，返回b，否则返回c，如<span class="keyword">if</span>(<span class="number">1</span>&gt;<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>),返回<span class="number">0</span></span><br><span class="line">sleep(n)：将程序挂起一段时间 n为n秒</span><br></pre></td></tr></table></figure>
-<h2 id="sqli-labs-nbsp-less8布尔盲注"><a href="#sqli-labs-nbsp-less8布尔盲注" class="headerlink" title="sqli-labs&nbsp;less8布尔盲注"></a>sqli-labs&nbsp;less8布尔盲注</h2><p>以sqli平台第八题为例写一下布尔盲注</p>
+<h2 id="sqli-labs-nbsp-less8"><a href="#sqli-labs-nbsp-less8" class="headerlink" title="sqli-labs&nbsp;less8"></a>sqli-labs&nbsp;less8</h2><p>以sqli平台第八题为例写一下布尔盲注</p>
 <p><img src="/2019/07/27/SQL注入-三-bool盲注/QQ截图20190804150105.png" alt="1"></p>
 <p>进行注入测试</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-8/?id=1</span><br><span class="line">http://127.0.0.1/sqli-labs-master/Less-8/?id=1'</span><br><span class="line">http://127.0.0.1/sqli-labs-master/Less-8/?id=1"</span><br><span class="line">http://127.0.0.1/sqli-labs-master/Less-8/?id=1' --+</span><br></pre></td></tr></table></figure>
@@ -551,7 +551,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -595,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概论"><span class="nav-number">1.</span> <span class="nav-text">概论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sqli-labs-nbsp-less8布尔盲注"><span class="nav-number">2.</span> <span class="nav-text">sqli-labs less8布尔盲注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附后台数据库"><span class="nav-number">4.</span> <span class="nav-text">附后台数据库</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概论"><span class="nav-number">1.</span> <span class="nav-text">概论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sqli-labs-nbsp-less8"><span class="nav-number">2.</span> <span class="nav-text">sqli-labs less8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附后台数据库"><span class="nav-number">4.</span> <span class="nav-text">附后台数据库</span></a></li></ol></div>
             
 
           </div>
