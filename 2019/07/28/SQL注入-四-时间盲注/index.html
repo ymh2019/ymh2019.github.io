@@ -142,7 +142,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/07/28/SQL注入-四-时间盲注/QQ截图20190813181247.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/28/SQL注入-四-时间盲注/QQ截图20190814225730.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/28/SQL注入-四-时间盲注/QQ截图20190814225757.png">
-<meta property="og:updated_time" content="2019-08-14T15:57:52.949Z">
+<meta property="og:updated_time" content="2019-10-16T11:22:57.848Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL注入&lt;四&gt;-时间盲注">
 <meta name="twitter:description" content="概论时间盲注：时间盲注与布尔盲注的注入原理大致相同，区别就是时间盲注没有回显或者正确和错误页面回显一样。所以时间型盲注需要页面沉睡时间判断，通过 sleep（）函数测试，通过if（）和sleep（）联合逐个猜解数据，例： 1http://127.0.0.1/Less-9/?id=1&apos; and (if(ascii(substr(database(),1,1))&amp;gt;100,1,sleep(5))">
@@ -358,7 +358,7 @@
       
         <h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><p><strong>时间盲注</strong>：时间盲注与布尔盲注的注入原理大致相同，区别就是时间盲注没有回显或者正确和错误页面回显一样。所以时间型盲注需要页面沉睡时间判断，通过 sleep（）函数测试，通过if（）和sleep（）联合逐个猜解数据，例：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/Less-9/?id=1' and (if(ascii(substr(database(),1,1))&gt;100,1,sleep(5))  --+</span><br></pre></td></tr></table></figure>
-<p>如果当前查询的当前数据库<code>ascii(substr(database()),1,1)</code>的第一个字符的ASCII码大于100，ture执行<code>select 1</code>页面正常返回，false执行<code>select sleep(5)</code>页面沉睡5秒后返回。1和sleep（5）也可以换下位置。</p>
+<p>如果当前查询的当前数据库<code>ascii(substr(database()),1,1)</code>的第一个字符的ASCII码大于100，ture执行<code>select 1</code>页面正常返回，false执行<code>select sleep(5)</code>页面沉睡5秒后返回。1和sleep（5）也可以换下位置。<a id="more"></a></p>
 <p><strong>常用函数</strong>：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sleep（n）：使数据库在暂停n秒之后再将搜索结果输出</span><br><span class="line">if（（条件），m，n）：若条件为真 返回m，若条件为假 返回n</span><br><span class="line">length（database()）：返回当前数据库名长度</span><br><span class="line">mid（database（），m，n）：返回数据库名的第m位之后的n位</span><br></pre></td></tr></table></figure>
 <h2 id="sqli-labs-nbsp-less9"><a href="#sqli-labs-nbsp-less9" class="headerlink" title="sqli-labs&nbsp;less9"></a>sqli-labs&nbsp;less9</h2><p>以sqli平台第九题为例写一下时间盲注</p>
